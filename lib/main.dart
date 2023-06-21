@@ -30,13 +30,51 @@ class MyApp extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(bottom: 5),
                 child: Text(
-                  'Basics',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w400),
+                  'System Tools',
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
                 ),
               ),
             ],
           ),
+        ),
+        body: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                shadowColor: Color(0xFF710AF5),
+                elevation: 30,
+                backgroundColor: Color(0xFFB175FF),
+                shape: CircleBorder(),
+                fixedSize: Size(179, 179),
+                side: const BorderSide(
+                  width: 4,
+                  color: Color(0xFF710AF5),
+                ),
+              ),
+              child: const Text(
+                'Connect',
+                style: TextStyle(
+                  color: Color(0xFFAB0552),
+                  fontSize: 22,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+            SizedBox(
+              width: 187,
+              height: 50,
+              child: TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(foregroundColor: Color(0xFFAB0552)),
+                child: const Text(
+                  'Can\'t connect? Check LG settings.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+          ]),
         ),
       ),
     );
