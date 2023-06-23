@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:liquidgalaxybasic/cleaning_screen.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,6 +11,12 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   int _navitemindex = 0;
+
+  final tabs = [
+    HomeBody(),
+    CleaningPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,45 +46,7 @@ class _HomepageState extends State<Homepage> {
             ],
           ),
         ),
-        body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                shadowColor: Color(0xFF710AF5),
-                elevation: 30,
-                backgroundColor: Color(0xFFB175FF),
-                shape: CircleBorder(),
-                fixedSize: Size(179, 179),
-                side: const BorderSide(
-                  width: 4,
-                  color: Color(0xFF710AF5),
-                ),
-              ),
-              child: const Text(
-                'Connect',
-                style: TextStyle(
-                  color: Color(0xFFAB0552),
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            const SizedBox(height: 5),
-            SizedBox(
-              width: 187,
-              height: 50,
-              child: TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(foregroundColor: Color(0xFFAB0552)),
-                child: const Text(
-                  'Can\'t connect? Check LG settings.',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ]),
-        ),
+        body: tabs[_navitemindex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
@@ -108,6 +77,53 @@ class _HomepageState extends State<Homepage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class HomeBody extends StatelessWidget {
+  const HomeBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            shadowColor: Color(0xFF710AF5),
+            elevation: 30,
+            backgroundColor: Color(0xFFB175FF),
+            shape: CircleBorder(),
+            fixedSize: Size(179, 179),
+            side: const BorderSide(
+              width: 4,
+              color: Color(0xFF710AF5),
+            ),
+          ),
+          child: const Text(
+            'Connect',
+            style: TextStyle(
+              color: Color(0xFFAB0552),
+              fontSize: 22,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+        const SizedBox(height: 5),
+        SizedBox(
+          width: 187,
+          height: 50,
+          child: TextButton(
+            onPressed: () {},
+            style: TextButton.styleFrom(foregroundColor: Color(0xFFAB0552)),
+            child: const Text(
+              'Can\'t connect? Check LG settings.',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }
