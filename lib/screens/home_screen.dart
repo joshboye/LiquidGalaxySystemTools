@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:liquidgalaxybasic/cleaning_screen.dart';
-import 'package:liquidgalaxybasic/settings_screen.dart';
+import 'package:liquidgalaxybasic/screens/about_screen.dart';
+import 'package:liquidgalaxybasic/screens/cleaning_screen.dart';
+import 'package:liquidgalaxybasic/screens/settings_screen.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -26,6 +27,15 @@ class _HomepageState extends State<Homepage> {
           backgroundColor: Color(0xFF07040A),
           appBar: AppBar(
             actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AboutScreen()),
+                  );
+                },
+                icon: SvgPicture.asset('images/icons/infoicon.svg'),
+              ),
               IconButton(
                 onPressed: () {
                   Navigator.push(

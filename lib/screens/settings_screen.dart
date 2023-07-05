@@ -121,6 +121,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 350,
                 child: TextField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(27),
@@ -157,6 +158,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 350,
                 child: TextField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(27),

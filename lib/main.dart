@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:liquidgalaxybasic/home_screen.dart';
+import 'package:liquidgalaxybasic/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
