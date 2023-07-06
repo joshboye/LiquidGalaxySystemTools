@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:liquidgalaxybasic/services/ssh_creds_storage_service.dart';
+import 'package:get_it/get_it.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -9,6 +11,23 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  final username = TextEditingController();
+  final password = TextEditingController();
+  final ip = TextEditingController();
+  final port = TextEditingController();
+  // SSHcredsStorage get ssHcredsStorage => GetIt.I<SSHcredsStorage>();
+  // SSHcredsStorage? ssHcredsStorage;
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   var getusername = ssHcredsStorage!.getSetting('username');
+  //   var getpassword = ssHcredsStorage!.getSetting('password');
+  //   var getip = ssHcredsStorage!.getSetting('ip');
+  //   var getport = ssHcredsStorage!.getSetting('port');
+  // }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,6 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 350,
                 child: TextField(
+                  controller: username,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(27),
@@ -84,6 +104,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 350,
                 child: TextField(
+                  controller: password,
                   obscureText: true,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -121,6 +142,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 350,
                 child: TextField(
+                  controller: ip,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -158,6 +180,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 350,
                 child: TextField(
+                  controller: port,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -196,7 +219,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 width: 150,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //   await ssHcredsStorage!.setSetting('username', username.text.toString());
+                    //   await ssHcredsStorage!.setSetting('password', password.text.toString());
+                    //   await ssHcredsStorage!.setSetting('ip', ip.text.toString());
+                    //   await ssHcredsStorage!.setSetting('port', port.text.toString());
+                  },
                   style: ElevatedButton.styleFrom(
                       shadowColor: Color(0xFF05ABA1),
                       elevation: 30,
