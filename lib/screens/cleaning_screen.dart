@@ -46,7 +46,39 @@ class CleaningPage extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  backgroundColor: Color.fromARGB(255, 30, 22, 38),
+                  titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
+                  contentTextStyle: TextStyle(color: Colors.white),
+                  shadowColor: Color.fromARGB(255, 0, 97, 234),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(19),
+                  ),
+                  title: Text('Are you sure?'),
+                  content: Text('All screens will be relaunched.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'Relaunch',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               elevation: 30,
               shadowColor: Color.fromARGB(255, 41, 128, 249),
@@ -76,7 +108,39 @@ class CleaningPage extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  backgroundColor: Color.fromARGB(255, 30, 22, 38),
+                  titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
+                  contentTextStyle: TextStyle(color: Colors.white),
+                  shadowColor: Color.fromARGB(255, 196, 42, 42),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(19),
+                  ),
+                  title: Text('Are you sure?'),
+                  content: Text('All screens will be rebooted.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'Reboot',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               elevation: 30,
               shadowColor: Color(0xFFED0000),
@@ -106,7 +170,39 @@ class CleaningPage extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  backgroundColor: Color.fromARGB(255, 30, 22, 38),
+                  titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
+                  contentTextStyle: TextStyle(color: Colors.white),
+                  shadowColor: Color(0xFF710AF5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(19),
+                  ),
+                  title: Text('Are you sure?'),
+                  content: Text('All screens will be powered off.'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'Power-off',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               elevation: 30,
               shadowColor: Color(0xFF710AF5),

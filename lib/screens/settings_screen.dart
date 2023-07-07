@@ -224,37 +224,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SizedBox(
                 width: 150,
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    setState(() {
-                      ssHcredsStorage.setvalue('username', username.text.toString());
-                      ssHcredsStorage.setvalue('password', password.text.toString());
-                      ssHcredsStorage.setvalue('ip', ip.text.toString());
-                      ssHcredsStorage.setvalue('port', port.text.toString());
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                      shadowColor: Color(0xFF05ABA1),
-                      elevation: 30,
-                      backgroundColor: Color(0xFF05ABA1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset('images/icons/saveicon.svg'),
-                      const SizedBox(width: 10),
-                      const Text(
-                        'SAVE',
-                        style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w400,
+                child: Builder(builder: (context) {
+                  return ElevatedButton(
+                    onPressed: () async {
+                      setState(() {
+                        ssHcredsStorage.setvalue('username', username.text.toString());
+                        ssHcredsStorage.setvalue('password', password.text.toString());
+                        ssHcredsStorage.setvalue('ip', ip.text.toString());
+                        ssHcredsStorage.setvalue('port', port.text.toString());
+                      });
+
+                      const snackBar = SnackBar(
+                        content: Text(
+                          'Saved!',
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
                         ),
-                      )
-                    ],
-                  ),
-                ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(30),
+                            bottom: Radius.circular(30),
+                          ),
+                        ),
+                        duration: Duration(seconds: 1),
+                        backgroundColor: Color.fromARGB(255, 143, 141, 141),
+                        behavior: SnackBarBehavior.floating,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        shadowColor: Color(0xFF05ABA1),
+                        elevation: 30,
+                        backgroundColor: Color(0xFF05ABA1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset('images/icons/saveicon.svg'),
+                        const SizedBox(width: 10),
+                        const Text(
+                          'SAVE',
+                          style: TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }),
               )
             ],
           ),
