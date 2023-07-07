@@ -15,18 +15,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final password = TextEditingController();
   final ip = TextEditingController();
   final port = TextEditingController();
-  // SSHcredsStorage get ssHcredsStorage => GetIt.I<SSHcredsStorage>();
-  // SSHcredsStorage? ssHcredsStorage;
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   var getusername = ssHcredsStorage!.getSetting('username');
-  //   var getpassword = ssHcredsStorage!.getSetting('password');
-  //   var getip = ssHcredsStorage!.getSetting('ip');
-  //   var getport = ssHcredsStorage!.getSetting('port');
-  // }
+  SSHcredsStorage get ssHcredsStorage => GetIt.I<SSHcredsStorage>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    var usernameget = ssHcredsStorage.getvalue('username');
+    var passwordget = ssHcredsStorage.getvalue('password');
+    var ipget = ssHcredsStorage.getvalue('ip');
+    var portget = ssHcredsStorage.getvalue('port');
+    setState(() {
+      username.text = usernameget;
+      password.text = passwordget;
+      ip.text = ipget;
+      port.text = portget;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -219,11 +225,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 width: 150,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {
-                    //   await ssHcredsStorage!.setSetting('username', username.text.toString());
-                    //   await ssHcredsStorage!.setSetting('password', password.text.toString());
-                    //   await ssHcredsStorage!.setSetting('ip', ip.text.toString());
-                    //   await ssHcredsStorage!.setSetting('port', port.text.toString());
+                  onPressed: () async {
+                    setState(() {
+                      ssHcredsStorage.setvalue('username', username.text.toString());
+                      ssHcredsStorage.setvalue('password', password.text.toString());
+                      ssHcredsStorage.setvalue('ip', ip.text.toString());
+                      ssHcredsStorage.setvalue('port', port.text.toString());
+                    });
                   },
                   style: ElevatedButton.styleFrom(
                       shadowColor: Color(0xFF05ABA1),

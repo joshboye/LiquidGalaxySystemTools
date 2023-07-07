@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:liquidgalaxybasic/screens/home_screen.dart';
+import 'package:liquidgalaxybasic/services/local_storage_service.dart';
+import 'package:liquidgalaxybasic/services/ssh_creds_storage_service.dart';
+
+void setupServices() {
+  GetIt.I.registerLazySingleton(() => SSHcredsStorage());
+  GetIt.I.registerLazySingleton(() => LocalStorageService());
+}
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServices();
+  GetIt.I<LocalStorageService>().loadStorage();
   runApp(const MyApp());
 }
 
