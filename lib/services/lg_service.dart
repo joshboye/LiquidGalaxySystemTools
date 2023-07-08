@@ -14,6 +14,28 @@ class LGservice {
     return (screenAmount / 2).floor() + 2;
   }
 
+  Future<String> connect() async {
+    final user = ssHcredsStorage.getvalue('username');
+    final pw = ssHcredsStorage.getvalue('password');
+    final ipaddress = ssHcredsStorage.getvalue('ip');
+    final prt = ssHcredsStorage.getvalue('port');
+
+    try {
+      SSHClient(
+        await SSHSocket.connect(
+          ipaddress,
+          int.parse(prt),
+          timeout: Duration(seconds: 8),
+        ),
+        username: user,
+        onPasswordRequest: () => pw,
+      );
+      return 'connected';
+    } catch (e) {
+      return 'error';
+    }
+  }
+
   Future<void> relaunch() async {
     final user = ssHcredsStorage.getvalue('username');
     final pw = ssHcredsStorage.getvalue('password');

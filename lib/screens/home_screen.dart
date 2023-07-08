@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:liquidgalaxybasic/screens/about_screen.dart';
 import 'package:liquidgalaxybasic/screens/cleaning_screen.dart';
 import 'package:liquidgalaxybasic/screens/settings_screen.dart';
+import 'package:liquidgalaxybasic/services/lg_service.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -107,54 +109,80 @@ class _HomepageState extends State<Homepage> {
   }
 }
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
+  @override
+  State<HomeBody> createState() => _HomeBodyState();
+}
+
+class _HomeBodyState extends State<HomeBody> {
+  LGservice get lgService => GetIt.I<LGservice>();
+
+  bool connected = false;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            shadowColor: Color(0xFF710AF5),
-            elevation: 30,
-            backgroundColor: Color(0xFFB175FF),
-            shape: CircleBorder(),
-            fixedSize: Size(200, 200),
-            side: const BorderSide(
-              width: 4,
-              color: Color(0xFF710AF5),
+            onPressed: () async {
+              var res = await lgService.connect();
+              print(res);
+              if (res == 'connected') {
+                setState(() {
+                  connected = true;
+                });
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              shadowColor: connected ? Color(0xFF053417) : Color(0xFF710AF5),
+              elevation: 30,
+              backgroundColor: connected ? Color(0xFF31B161) : Color(0xFFB175FF),
+              shape: CircleBorder(),
+              fixedSize: Size(200, 200),
+              side: connected ? const BorderSide(width: 4, color: Color(0xFF053417)) : const BorderSide(width: 4, color: Color(0xFF710AF5)),
             ),
-          ),
-          child: const Text(
-            'Connect',
-            style: TextStyle(
-              color: Color(0xFFAB0552),
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
+            child: connected
+                ? const Text('Connected',
+                    style: TextStyle(
+                      color: Color(0xFFFFB100),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w400,
+                    ))
+                : const Text('Connect',
+                    style: TextStyle(
+                      color: Color(0xFFAB0552),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w400,
+                    ))),
         const SizedBox(height: 5),
         SizedBox(
           width: 187,
           height: 50,
-          child: TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingsScreen(),
+          child: connected
+              ? TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(foregroundColor: Color(0xFFB175FF)),
+                  child: const Text(
+                    'You\'re all set!',
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              : TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsScreen(),
+                      ),
+                    );
+                  },
+                  style: TextButton.styleFrom(foregroundColor: Color(0xFFAB0552)),
+                  child: const Text(
+                    'Can\'t connect? Check LG settings.',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              );
-            },
-            style: TextButton.styleFrom(foregroundColor: Color(0xFFAB0552)),
-            child: const Text(
-              'Can\'t connect? Check LG settings.',
-              textAlign: TextAlign.center,
-            ),
-          ),
         ),
       ]),
     );
