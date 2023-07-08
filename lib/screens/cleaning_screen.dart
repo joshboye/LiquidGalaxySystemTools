@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:liquidgalaxybasic/services/lg_service.dart';
 
-class CleaningPage extends StatelessWidget {
+class CleaningPage extends StatefulWidget {
   const CleaningPage({super.key});
+
+  @override
+  State<CleaningPage> createState() => _CleaningPageState();
+}
+
+class _CleaningPageState extends State<CleaningPage> {
+  LGservice get lgService => GetIt.I<LGservice>();
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +78,9 @@ class CleaningPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        setState(() {
+                          lgService.relaunch();
+                        });
                       },
                       child: const Text(
                         'Relaunch',
@@ -131,6 +143,9 @@ class CleaningPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        setState(() {
+                          lgService.reboot();
+                        });
                       },
                       child: const Text(
                         'Reboot',
@@ -193,6 +208,9 @@ class CleaningPage extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        setState(() {
+                          lgService.shutdown();
+                        });
                       },
                       child: const Text(
                         'Power-off',

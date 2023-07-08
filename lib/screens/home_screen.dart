@@ -121,7 +121,7 @@ class HomeBody extends StatelessWidget {
             elevation: 30,
             backgroundColor: Color(0xFFB175FF),
             shape: CircleBorder(),
-            fixedSize: Size(179, 179),
+            fixedSize: Size(200, 200),
             side: const BorderSide(
               width: 4,
               color: Color(0xFF710AF5),
