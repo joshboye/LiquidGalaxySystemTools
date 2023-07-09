@@ -25,11 +25,15 @@ class _CleaningPageState extends State<CleaningPage> {
         mainAxisSpacing: 20,
         children: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                lgService.clearKmlLogo();
+              });
+            },
             style: ElevatedButton.styleFrom(
               elevation: 30,
-              shadowColor: Color.fromARGB(255, 250, 179, 13),
-              backgroundColor: Color(0xFFFCBA25),
+              shadowColor: const Color.fromARGB(255, 250, 179, 13),
+              backgroundColor: const Color(0xFFFCBA25),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
@@ -59,21 +63,21 @@ class _CleaningPageState extends State<CleaningPage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 30, 22, 38),
-                  titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
-                  contentTextStyle: TextStyle(color: Colors.white),
-                  shadowColor: Color.fromARGB(255, 0, 97, 234),
+                  backgroundColor: const Color.fromARGB(255, 30, 22, 38),
+                  titleTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
+                  contentTextStyle: const TextStyle(color: Colors.white),
+                  shadowColor: const Color.fromARGB(255, 0, 97, 234),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(19),
                   ),
-                  title: Text('Are you sure?'),
-                  content: Text('All screens will be relaunched.'),
+                  title: const Text('Are you sure?'),
+                  content: const Text('All screens will be relaunched.'),
                   actions: <Widget>[
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () {
@@ -93,8 +97,8 @@ class _CleaningPageState extends State<CleaningPage> {
             },
             style: ElevatedButton.styleFrom(
               elevation: 30,
-              shadowColor: Color.fromARGB(255, 41, 128, 249),
-              backgroundColor: Color(0xFF4C7CBF),
+              shadowColor: const Color.fromARGB(255, 41, 128, 249),
+              backgroundColor: const Color(0xFF4C7CBF),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
@@ -124,21 +128,21 @@ class _CleaningPageState extends State<CleaningPage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 30, 22, 38),
-                  titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
-                  contentTextStyle: TextStyle(color: Colors.white),
-                  shadowColor: Color.fromARGB(255, 196, 42, 42),
+                  backgroundColor: const Color.fromARGB(255, 30, 22, 38),
+                  titleTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
+                  contentTextStyle: const TextStyle(color: Colors.white),
+                  shadowColor: const Color.fromARGB(255, 196, 42, 42),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(19),
                   ),
-                  title: Text('Are you sure?'),
-                  content: Text('All screens will be rebooted.'),
+                  title: const Text('Are you sure?'),
+                  content: const Text('All screens will be rebooted.'),
                   actions: <Widget>[
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () {
@@ -158,8 +162,8 @@ class _CleaningPageState extends State<CleaningPage> {
             },
             style: ElevatedButton.styleFrom(
               elevation: 30,
-              shadowColor: Color(0xFFED0000),
-              backgroundColor: Color(0xFFED0000),
+              shadowColor: const Color(0xFFED0000),
+              backgroundColor: const Color(0xFFED0000),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
@@ -189,21 +193,21 @@ class _CleaningPageState extends State<CleaningPage> {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 30, 22, 38),
-                  titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
-                  contentTextStyle: TextStyle(color: Colors.white),
-                  shadowColor: Color(0xFF710AF5),
+                  backgroundColor: const Color.fromARGB(255, 30, 22, 38),
+                  titleTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 19),
+                  contentTextStyle: const TextStyle(color: Colors.white),
+                  shadowColor: const Color(0xFF710AF5),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(19),
                   ),
-                  title: Text('Are you sure?'),
-                  content: Text('All screens will be powered off.'),
+                  title: const Text('Are you sure?'),
+                  content: const Text('All screens will be powered off.'),
                   actions: <Widget>[
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () {
@@ -223,8 +227,8 @@ class _CleaningPageState extends State<CleaningPage> {
             },
             style: ElevatedButton.styleFrom(
               elevation: 30,
-              shadowColor: Color(0xFF710AF5),
-              backgroundColor: Color(0xFFB175FF),
+              shadowColor: const Color(0xFF710AF5),
+              backgroundColor: const Color(0xFFB175FF),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),

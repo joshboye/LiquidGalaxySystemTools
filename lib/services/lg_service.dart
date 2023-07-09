@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dartssh2/dartssh2.dart';
 import 'package:get_it/get_it.dart';
 import 'package:liquidgalaxybasic/services/ssh_creds_storage_service.dart';
@@ -70,6 +72,42 @@ class LGservice {
         // ignore: avoid_print
         print(e);
       }
+    }
+  }
+
+  static String generateBlank(String id) {
+    return '''
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document id="$id">
+  </Document>
+</kml>
+    ''';
+  }
+
+  Future<void> clearKmlLogo() async {
+    final user = ssHcredsStorage.getvalue('username');
+    final pw = ssHcredsStorage.getvalue('password');
+    final ipaddress = ssHcredsStorage.getvalue('ip');
+    final prt = ssHcredsStorage.getvalue('port');
+
+    final client = SSHClient(
+      await SSHSocket.connect(ipaddress, int.parse(prt)),
+      username: user,
+      onPasswordRequest: () => pw,
+    );
+
+    String query = 'echo "exittour=true" > /tmp/query.txt && > /var/www/html/kmls.txt';
+
+    for (var i = 2; i <= screenAmount; i++) {
+      String blankKml = generateBlank('slave_$i');
+      query += " && echo '$blankKml' > /var/www/html/kml/slave_$i.kml";
+    }
+
+    try {
+      await client.execute(query);
+    } catch (e) {
+      print(e);
     }
   }
 

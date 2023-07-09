@@ -8,7 +8,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF07040A),
+        backgroundColor: const Color(0xFF07040A),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

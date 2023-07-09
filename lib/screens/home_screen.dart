@@ -17,8 +17,8 @@ class _HomepageState extends State<Homepage> {
   int _navitemindex = 0;
 
   final tabs = [
-    HomeBody(),
-    CleaningPage(),
+    const HomeBody(),
+    const CleaningPage(),
   ];
 
   @override
@@ -26,7 +26,7 @@ class _HomepageState extends State<Homepage> {
     return MaterialApp(
       home: Builder(
         builder: (context) => Scaffold(
-          backgroundColor: Color(0xFF07040A),
+          backgroundColor: const Color(0xFF07040A),
           appBar: AppBar(
             actions: [
               IconButton(
@@ -51,7 +51,7 @@ class _HomepageState extends State<Homepage> {
               )
             ],
             centerTitle: true,
-            backgroundColor: Color(0xFF07040A),
+            backgroundColor: const Color(0xFF07040A),
             title: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -78,7 +78,7 @@ class _HomepageState extends State<Homepage> {
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            backgroundColor: Color(0xFF07040A),
+            backgroundColor: const Color(0xFF07040A),
             currentIndex: _navitemindex,
             onTap: (index) {
               setState(() {
@@ -90,14 +90,14 @@ class _HomepageState extends State<Homepage> {
                 // ignore: deprecated_member_use
                 icon: SvgPicture.asset(
                   'images/icons/HomeIcon.svg',
-                  color: _navitemindex == 1 ? Color(0xFFAB0552) : Color(0xFFFCBA25),
+                  color: _navitemindex == 1 ? const Color(0xFFAB0552) : const Color(0xFFFCBA25),
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   'images/icons/Cleanlogo.svg',
-                  color: _navitemindex == 0 ? Color(0xFFAB0552) : Color(0xFFFCBA25),
+                  color: _navitemindex == 0 ? const Color(0xFFAB0552) : const Color(0xFFFCBA25),
                 ),
                 label: 'Tools',
               )
@@ -148,11 +148,11 @@ class _HomeBodyState extends State<HomeBody> {
               checkconnection();
             },
             style: ElevatedButton.styleFrom(
-              shadowColor: connected ? Color(0xFF053417) : Color(0xFF710AF5),
+              shadowColor: connected ? const Color(0xFF053417) : const Color(0xFF710AF5),
               elevation: 30,
-              backgroundColor: connected ? Color(0xFF31B161) : Color(0xFFB175FF),
-              shape: CircleBorder(),
-              fixedSize: Size(200, 200),
+              backgroundColor: connected ? const Color(0xFF31B161) : const Color(0xFFB175FF),
+              shape: const CircleBorder(),
+              fixedSize: const Size(200, 200),
               side: connected ? const BorderSide(width: 4, color: Color(0xFF053417)) : const BorderSide(width: 4, color: Color(0xFF710AF5)),
             ),
             child: connected
@@ -175,7 +175,7 @@ class _HomeBodyState extends State<HomeBody> {
           child: connected
               ? TextButton(
                   onPressed: () {},
-                  style: TextButton.styleFrom(foregroundColor: Color(0xFFB175FF)),
+                  style: TextButton.styleFrom(foregroundColor: const Color(0xFFB175FF)),
                   child: const Text(
                     'You\'re all set!',
                     textAlign: TextAlign.center,
@@ -190,7 +190,7 @@ class _HomeBodyState extends State<HomeBody> {
                       ),
                     );
                   },
-                  style: TextButton.styleFrom(foregroundColor: Color(0xFFAB0552)),
+                  style: TextButton.styleFrom(foregroundColor: const Color(0xFFAB0552)),
                   child: const Text(
                     'Can\'t connect? Check LG settings.',
                     textAlign: TextAlign.center,

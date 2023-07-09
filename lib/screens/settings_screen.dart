@@ -41,9 +41,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Color(0xFF07040A),
+          backgroundColor: const Color(0xFF07040A),
           appBar: AppBar(
-            backgroundColor: Color(0xFF07040A),
+            backgroundColor: const Color(0xFF07040A),
           ),
           body: Column(
             children: [
