@@ -120,19 +120,32 @@ class _HomeBodyState extends State<HomeBody> {
   LGservice get lgService => GetIt.I<LGservice>();
 
   bool connected = false;
+  bool loading = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    checkconnection();
+    super.initState();
+  }
+
+  Future<void> checkconnection() async {
+    var res = await lgService.connect();
+    print(res);
+    if (res == 'connected') {
+      setState(() {
+        connected = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         ElevatedButton(
-            onPressed: () async {
-              var res = await lgService.connect();
-              print(res);
-              if (res == 'connected') {
-                setState(() {
-                  connected = true;
-                });
-              }
+            onPressed: () {
+              checkconnection();
             },
             style: ElevatedButton.styleFrom(
               shadowColor: connected ? Color(0xFF053417) : Color(0xFF710AF5),
