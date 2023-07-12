@@ -28,6 +28,7 @@ class _HomepageState extends State<Homepage> {
         builder: (context) => Scaffold(
           backgroundColor: const Color(0xFF07040A),
           appBar: AppBar(
+            toolbarHeight: 100,
             actions: [
               IconButton(
                 onPressed: () {
@@ -55,21 +56,25 @@ class _HomepageState extends State<Homepage> {
             title: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Padding(padding: EdgeInsets.only(top: 7)),
+                // const Padding(padding: EdgeInsets.only(top: 10)),
+                const SizedBox(
+                  height: 10,
+                ),
                 SvgPicture.asset(
                   'images/lglogo.svg',
-                  height: 35,
+                  height: 50,
+                  width: 100,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 5),
-                  child: Text(
-                    'System Tools',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-                  ),
+                const Text(
+                  'System Tools',
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
                 ),
+                const SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),

@@ -8,6 +8,14 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF07040A),
+          leading: BackButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
         backgroundColor: const Color(0xFF07040A),
         body: Center(
           child: Column(

@@ -44,6 +44,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
           backgroundColor: const Color(0xFF07040A),
           appBar: AppBar(
             backgroundColor: const Color(0xFF07040A),
+            leading: BackButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ),
           body: Column(
             children: [
