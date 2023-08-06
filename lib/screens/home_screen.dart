@@ -134,6 +134,16 @@ class _HomeBodyState extends State<HomeBody> {
     super.initState();
   }
 
+  double heightwidth() {
+    double heightwidthvalue;
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      heightwidthvalue = MediaQuery.of(context).size.width * .34;
+    } else {
+      heightwidthvalue = MediaQuery.of(context).size.height * .32;
+    }
+    return heightwidthvalue;
+  }
+
   Future<void> checkconnection() async {
     var res = await lgService.connect();
     print(res);
@@ -157,7 +167,7 @@ class _HomeBodyState extends State<HomeBody> {
               elevation: 30,
               backgroundColor: connected ? const Color(0xFF31B161) : const Color(0xFFB175FF),
               shape: const CircleBorder(),
-              fixedSize: const Size(200, 200),
+              fixedSize: Size(heightwidth(), heightwidth()),
               side: connected ? const BorderSide(width: 4, color: Color(0xFF053417)) : const BorderSide(width: 4, color: Color(0xFF710AF5)),
             ),
             child: connected

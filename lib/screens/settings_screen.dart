@@ -15,6 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final password = TextEditingController();
   final ip = TextEditingController();
   final port = TextEditingController();
+  final screenamount = TextEditingController();
 
   SSHcredsStorage get ssHcredsStorage => GetIt.I<SSHcredsStorage>();
 
@@ -25,11 +26,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     var passwordget = ssHcredsStorage.getvalue('password');
     var ipget = ssHcredsStorage.getvalue('ip');
     var portget = ssHcredsStorage.getvalue('port');
+    var screenamountget = ssHcredsStorage.getvalue('screenamount');
     setState(() {
       username.text = usernameget;
       password.text = passwordget;
       ip.text = ipget;
       port.text = portget;
+      screenamount.text = screenamountget;
     });
     super.initState();
   }
@@ -227,6 +230,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 height: 20,
               ),
               SizedBox(
+                width: 350,
+                child: TextField(
+                  controller: screenamount,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(27),
+                        borderSide: const BorderSide(
+                          color: Color(0xFFD9D9D9),
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                          color: Color(0xFFD9D9D9),
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFD9D9D9),
+                          )),
+                      labelText: 'Number of Screens',
+                      labelStyle: const TextStyle(
+                        color: Color(0xFFD9D9D9),
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.all(9.0),
+                        child: SvgPicture.asset('images/icons/porticon.svg'),
+                      ),
+                      prefixIconConstraints: const BoxConstraints(minHeight: 30, minWidth: 30)),
+                  style: const TextStyle(color: Color(0xFFD9D9D9)),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
                 width: 150,
                 height: 50,
                 child: Builder(builder: (context) {
@@ -237,6 +278,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ssHcredsStorage.setvalue('password', password.text.toString());
                         ssHcredsStorage.setvalue('ip', ip.text.toString());
                         ssHcredsStorage.setvalue('port', port.text.toString());
+                        ssHcredsStorage.setvalue('screenamount', screenamount.text.toString());
                       });
 
                       const snackBar = SnackBar(

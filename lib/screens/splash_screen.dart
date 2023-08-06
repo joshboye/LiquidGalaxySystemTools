@@ -52,15 +52,15 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 100,
               width: 200,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            SizedBox(
+            const SizedBox(
+              width: 150,
               child: Text(
                 'Liquid Galaxy System Tools',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
-              width: 150,
             ),
           ],
         ),

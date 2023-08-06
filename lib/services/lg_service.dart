@@ -5,8 +5,8 @@ import 'package:liquidgalaxybasic/services/ssh_creds_storage_service.dart';
 class LGservice {
   SSHcredsStorage get ssHcredsStorage => GetIt.I<SSHcredsStorage>();
 
-  int screenAmount = 3;
   int get logoScreen {
+    final screenAmount = int.parse(ssHcredsStorage.getvalue('screenamount'));
     if (screenAmount == 1) {
       return 1;
     }
@@ -41,6 +41,7 @@ class LGservice {
     final pw = ssHcredsStorage.getvalue('password');
     final ipaddress = ssHcredsStorage.getvalue('ip');
     final prt = ssHcredsStorage.getvalue('port');
+    final screenAmount = int.parse(ssHcredsStorage.getvalue('screenamount'));
 
     final client = SSHClient(
       await SSHSocket.connect(ipaddress, int.parse(prt)),
@@ -88,6 +89,7 @@ class LGservice {
     final pw = ssHcredsStorage.getvalue('password');
     final ipaddress = ssHcredsStorage.getvalue('ip');
     final prt = ssHcredsStorage.getvalue('port');
+    final screenAmount = int.parse(ssHcredsStorage.getvalue('screenamount'));
 
     final client = SSHClient(
       await SSHSocket.connect(ipaddress, int.parse(prt)),
@@ -114,6 +116,7 @@ class LGservice {
     final pw = ssHcredsStorage.getvalue('password');
     final ipaddress = ssHcredsStorage.getvalue('ip');
     final prt = ssHcredsStorage.getvalue('port');
+    final screenAmount = int.parse(ssHcredsStorage.getvalue('screenamount'));
 
     final client = SSHClient(
       await SSHSocket.connect(ipaddress, int.parse(prt)),
@@ -136,6 +139,7 @@ class LGservice {
     final pw = ssHcredsStorage.getvalue('password');
     final ipaddress = ssHcredsStorage.getvalue('ip');
     final prt = ssHcredsStorage.getvalue('port');
+    final screenAmount = int.parse(ssHcredsStorage.getvalue('screenamount'));
 
     final client = SSHClient(
       await SSHSocket.connect(ipaddress, int.parse(prt)),
