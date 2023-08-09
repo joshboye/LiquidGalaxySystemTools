@@ -16,8 +16,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final ip = TextEditingController();
   final port = TextEditingController();
   final screenamount = TextEditingController();
+  bool isHidden = true;
 
   SSHcredsStorage get ssHcredsStorage => GetIt.I<SSHcredsStorage>();
+
+  void togglevisibility() => setState(() {
+        isHidden = !isHidden;
+      });
 
   @override
   void initState() {
@@ -119,34 +124,47 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 width: 350,
                 child: TextField(
                   controller: password,
-                  obscureText: true,
+                  obscureText: isHidden,
                   decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(27),
-                        borderSide: const BorderSide(
-                          color: Color(0xFFD9D9D9),
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          color: Color(0xFFD9D9D9),
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(
-                            color: Color(0xFFD9D9D9),
-                          )),
-                      labelText: 'Password',
-                      labelStyle: const TextStyle(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(27),
+                      borderSide: const BorderSide(
                         color: Color(0xFFD9D9D9),
                       ),
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(9.0),
-                        child: SvgPicture.asset('images/icons/lockicon.svg'),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25),
+                      borderSide: const BorderSide(
+                        color: Color(0xFFD9D9D9),
                       ),
-                      prefixIconConstraints: const BoxConstraints(minHeight: 30, minWidth: 30)),
+                    ),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(
+                          color: Color(0xFFD9D9D9),
+                        )),
+                    labelText: 'Password',
+                    labelStyle: const TextStyle(
+                      color: Color(0xFFD9D9D9),
+                    ),
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(9.0),
+                      child: SvgPicture.asset('images/icons/lockicon.svg'),
+                    ),
+                    prefixIconConstraints: const BoxConstraints(minHeight: 30, minWidth: 30),
+                    suffixIcon: IconButton(
+                      icon: isHidden
+                          ? const Icon(
+                              Icons.visibility_off,
+                              color: Colors.white,
+                            )
+                          : const Icon(
+                              Icons.visibility,
+                              color: Colors.white,
+                            ),
+                      onPressed: togglevisibility,
+                    ),
+                  ),
                   style: const TextStyle(color: Color(0xFFD9D9D9)),
                 ),
               ),

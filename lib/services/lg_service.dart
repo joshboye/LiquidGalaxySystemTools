@@ -32,7 +32,7 @@ class LGservice {
       );
       return 'connected';
     } catch (e) {
-      return 'error';
+      return '$e';
     }
   }
 

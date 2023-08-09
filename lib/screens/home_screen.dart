@@ -146,7 +146,22 @@ class _HomeBodyState extends State<HomeBody> {
 
   Future<void> checkconnection() async {
     var res = await lgService.connect();
-    print(res);
+    var snackBar = SnackBar(
+      content: Text(
+        res,
+        style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+      ),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(30),
+          bottom: Radius.circular(30),
+        ),
+      ),
+      duration: Duration(seconds: 3),
+      backgroundColor: Color.fromARGB(255, 143, 141, 141),
+      behavior: SnackBarBehavior.floating,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
     if (res == 'connected') {
       setState(() {
         connected = true;
