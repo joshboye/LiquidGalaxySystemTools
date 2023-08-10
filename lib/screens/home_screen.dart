@@ -35,13 +35,13 @@ class _HomepageState extends State<Homepage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const AboutScreen()),
-                  );
+                  ).then((_) => setState(() {}));
                 },
                 icon: SvgPicture.asset('images/icons/infoicon.svg'),
               ),
               IconButton(
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const SettingsScreen(),
@@ -161,10 +161,14 @@ class _HomeBodyState extends State<HomeBody> {
       backgroundColor: Color.fromARGB(255, 143, 141, 141),
       behavior: SnackBarBehavior.floating,
     );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
     if (res == 'connected') {
       setState(() {
         connected = true;
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      setState(() {
+        connected = false;
       });
     }
   }

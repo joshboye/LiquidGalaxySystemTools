@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:liquidgalaxybasic/screens/home_screen.dart';
 import 'package:liquidgalaxybasic/services/ssh_creds_storage_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -54,7 +55,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             backgroundColor: const Color(0xFF07040A),
             leading: BackButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Homepage(),
+                  ),
+                );
               },
             ),
           ),
