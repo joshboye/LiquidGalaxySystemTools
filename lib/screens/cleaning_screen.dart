@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
@@ -13,6 +15,8 @@ class CleaningPage extends StatefulWidget {
 class _CleaningPageState extends State<CleaningPage> {
   LGservice get lgService => GetIt.I<LGservice>();
 
+  bool connected = false;
+
   double heightwidth() {
     double heightwidthvalue;
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
@@ -24,11 +28,45 @@ class _CleaningPageState extends State<CleaningPage> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkconnection();
+    Timer.periodic(Duration(seconds: 8), (timer) {
+      setState(() {
+        checkconnection();
+      });
+    });
+  }
+
+  Future<void> checkconnection() async {
+    var res = await lgService.connect();
+    if (res == 'connected') {
+      setState(() {
+        connected = true;
+      });
+    } else {
+      setState(() {
+        connected = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        connected
+            ? const BlinkText("Connected")
+            : const Text(
+                "Disconnected",
+                style: TextStyle(fontSize: 20, color: Colors.red, fontWeight: FontWeight.w500),
+              ),
+        const SizedBox(
+          height: 50,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -144,7 +182,7 @@ class _CleaningPageState extends State<CleaningPage> {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 18,
         ),
         Row(
@@ -219,7 +257,7 @@ class _CleaningPageState extends State<CleaningPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 18,
             ),
             SizedBox(
@@ -296,4 +334,34 @@ class _CleaningPageState extends State<CleaningPage> {
       ],
     ));
   }
+}
+
+class BlinkText extends StatefulWidget {
+  final String _target;
+  const BlinkText(this._target, {Key? key}) : super(key: key);
+
+  @override
+  State<BlinkText> createState() => _BlinkTextState();
+}
+
+class _BlinkTextState extends State<BlinkText> {
+  bool _show = true;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _timer = Timer.periodic(const Duration(milliseconds: 800), (timer) {
+      setState(() {
+        _show = !_show;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) => Text(
+        widget._target,
+        style: _show ? const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.green) : const TextStyle(fontSize: 20, color: Colors.transparent),
+      );
 }

@@ -11,6 +11,13 @@ class AboutScreen extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF07040A),
+          title: Text(
+            "About",
+            style: TextStyle(fontWeight: FontWeight.w400),
+          ),
+          actions: [
+            IconButton(onPressed: () {}, icon: SvgPicture.asset('images/icons/infoicon.svg'))
+          ],
           leading: BackButton(
             onPressed: () {
               Navigator.pushReplacement(
@@ -24,9 +31,31 @@ class AboutScreen extends StatelessWidget {
         ),
         backgroundColor: const Color(0xFF07040A),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
+              SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                width: 250,
+                height: 250,
+                child: SvgPicture.asset('images/systemToolsIcon.svg'),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Center(
+                child: SizedBox(
+                  height: 40,
+                  child: Text(
+                    "Liquid Galaxy System Tools",
+                    style: TextStyle(fontSize: 30, color: Colors.white70, fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
               SizedBox(
                 width: 109,
                 height: 70,
