@@ -33,6 +33,7 @@ class _CleaningPageState extends State<CleaningPage> {
     super.initState();
     checkconnection();
     Timer.periodic(Duration(seconds: 8), (timer) {
+      if (!mounted) return;
       setState(() {
         checkconnection();
       });
@@ -352,6 +353,7 @@ class _BlinkTextState extends State<BlinkText> {
   void initState() {
     // TODO: implement initState
     _timer = Timer.periodic(const Duration(milliseconds: 800), (timer) {
+      if (!mounted) return;
       setState(() {
         _show = !_show;
       });
